@@ -399,3 +399,182 @@ function makeTingSource(cfg) {
 TING_CMS_SITES.forEach(function (cfg) {
   makeTingSource(cfg);
 });
+
+// ============ 爱听书 itingshu.net ============
+// 结构：分类 /yousheng/{cat}/lastupdate/1/{page}.html，书 /youshengxiaoshuo/{id}/，
+// 章节 /play/{book}_{part}_{n}.html，全部章节 /itingshus/{o1}/{o2}.html?page=N&sort=asc（约50章/页）
+// 音频：页面内混淆 JS 播放器，sp 头会话绑定不可伪造 → WebView 嗅探（页面加载即自动播放出媒体请求）
+// 反爬：/play/、/itingshus/、/novelsearch/、/api/ 首次访问一律回 1275B 壳，壳内倒序 base64 藏
+// __51guid__ token；带 cookie 重取即真页。token 约 2 小时有效，命中后单请求直达。
+
+var IT = { token: '', at: 0, base: 'https://www.itingshu.net' };
+
+var IT_CATS = [
+  ['全部有声', 'all'], ['玄幻修真', 'xuanhuan'], ['都市言情', 'dushi'],
+  ['灵异惊悚', 'lingyi'], ['相声戏曲', 'xiangsheng'], ['综艺娱乐', 'yule'],
+  ['百家讲坛', 'bjjt'], ['军事历史', 'junshi'], ['儿童故事', 'ertong'],
+  ['网游竞技', 'jingji'], ['官场商战', 'guanchangshangzhan'], ['人物传记', 'chuanji'],
+  ['通俗文学', 'wenxue'], ['经典纪实', 'jishi'], ['其他有声', 'qita'], ['长篇评书', 'pingshu']
+];
+
+function itCards(doc) {
+  var out = [];
+  doc.select('li:has(dl.list-works-dl)').forEach(function (li) {
+    var dl = li.first('dl.list-works-dl');
+    var a = dl.first('a[href*="/youshengxiaoshuo/"]');
+    var href = a.absUrl('href');
+    var title = a.text() || a.attr('title');
+    if (!href || !title) return;
+    for (var i = 0; i < out.length; i++) {
+      if (out[i].bookUrl === href) return;
+    }
+    out.push({
+      coverUrl: li.first('.list-imgbox img').absUrl('src'),
+      bookUrl: href,
+      title: title,
+      author: dl.first('span.book-author a').text(),
+      artist: dl.first('span.book-boyin a').text(),
+      intro: dl.first('dd.list-book-des').text(),
+      status: dl.first('span.ztlz').text()
+    });
+  });
+  return out;
+}
+
+registerSource({
+  id: 'f3a9c5d20b17e4689a2f6031c8d54b70',
+  name: '爱听书',
+  url: IT.base,
+  group: '听书',
+  description: '海量网文有声书，16分类。首次播放走 WebView 嗅探约慢五六秒，之后秒开。',
+
+  itCookie: function () {
+    return { Cookie: '__51guid__=' + IT.token + '; __51refresh__guid=1', Referer: IT.base + '/' };
+  },
+
+  itToken: function (force) {
+    if (!force && IT.token && Date.now() - IT.at < 6600000) return IT.token;
+    var stub = this.host.getString(IT.base + '/play/1_1_1.html', { desktop: true });
+    var m = stub.match(/reversed\s*=\s*"([^"]+)"/);
+    if (!m) throw new Error('爱听书反爬壳异常');
+    var code = this.host.base64Decode(m[1].split('').reverse().join(''));
+    var t = code.match(/token = '([^']+)'/);
+    if (!t) throw new Error('爱听书 token 解析失败');
+    IT.token = t[1];
+    IT.at = Date.now();
+    return IT.token;
+  },
+
+  itReal: function (url) {
+    this.itToken(false);
+    var self = this;
+    var html = this.host.getString(url, { desktop: true, headers: this.itCookie() });
+    if (html && html.length > 3000 && html.indexOf('Loading') < 0) return html;
+    this.itToken(true);
+    return this.host.getString(url, { desktop: true, headers: this.itCookie() });
+  },
+
+  categoryMenus: function () {
+    return [{
+      title: '分类',
+      tabs: IT_CATS.map(function (c) {
+        return { title: c[0], url: 'it:' + c[1] + '#1' };
+      })
+    }];
+  },
+
+  categoryPage: function (u) {
+    var m = u.match(/^it:([a-z]+)#(\d+)$/);
+    var cat = m[1], page = parseInt(m[2], 10);
+    var html = this.host.getString(IT.base + '/yousheng/' + cat + '/lastupdate/1/' + page + '.html', { desktop: true });
+    var doc = this.host.parseHtml(html, IT.base);
+    return {
+      books: itCards(doc),
+      currentPage: page,
+      nextUrl: html.indexOf('/yousheng/' + cat + '/lastupdate/1/' + (page + 1) + '.html') > -1
+        ? 'it:' + cat + '#' + (page + 1) : ''
+    };
+  },
+
+  search: function (keywords, page) {
+    var self = this;
+    var url = IT.base + '/novelsearch/search/result.html';
+    var body = 'searchword=' + encodeURIComponent(keywords);
+    this.itToken(false);
+    var html = this.host.getString(url, {
+      desktop: true, method: 'post', body: body, headers: this.itCookie()
+    });
+    if (html && html.length < 3000 && html.indexOf('reversed') > -1) {
+      this.itToken(true);
+      html = this.host.getString(url, {
+        desktop: true, method: 'post', body: body, headers: this.itCookie()
+      });
+    }
+    if (!html) throw new Error('爱听书搜索请求失败');
+    if (html.indexOf('无相关内容') > -1) throw new Error('未搜到“' + keywords + '”，试试分类里找');
+    var doc = this.host.parseHtml(html, IT.base);
+    return { books: itCards(doc), totalPage: page };
+  },
+
+  bookDetail: function (bookUrl, loadEpisodes, loadFullPages) {
+    var self = this;
+    var doc = this.host.getHtml(bookUrl, { desktop: true });
+    var author = doc.first('dd:has(a[href*="/author/"])').text().replace(/^[\s\S]*?作者[：:]/, '');
+    var artist = doc.first('dd:has(a[href*="/boyin/"])').text().replace(/^[\s\S]*?演播[：:]/, '');
+    var intro = doc.first('p:has(span:contains(简介))').text().replace(/^[\s\S]*?简介[：:]/, '');
+    if (intro.length > 500) intro = intro.substring(0, 500) + '…';
+    var status = doc.first('dd:contains(状态)').text().replace(/^[\s\S]*?状态[：:]/, '');
+    var eps = [];
+    var seen = {};
+    function pushEps(d2) {
+      d2.select('#playlist li a[href*="/play/"]').forEach(function (a) {
+        var u = a.absUrl('href');
+        if (!u || seen[u] || !/\/play\/\d+_\d+_\d+\.html/.test(u)) return;
+        seen[u] = true;
+        eps.push({ title: a.text(), url: u });
+      });
+    }
+    pushEps(doc);
+    if (loadFullPages) {
+      var du = doc.first('a.dirurl').absUrl('href');
+      if (du && du.indexOf('/itingshus/') > -1) {
+        var empty = 0;
+        for (var p = 1; p <= 260; p++) {
+          var html;
+          try {
+            html = self.itReal(du + '?page=' + p + '&sort=asc');
+          } catch (e) { break; }
+          if (!html || html.length < 3000 || html.indexOf('Loading') > -1) break;
+          var d2 = self.host.parseHtml(html, self.url);
+          var before = eps.length;
+          pushEps(d2);
+          self.host.progress(eps.length + ' 集 (' + p + ')');
+          if (eps.length === before) {
+            empty++;
+            if (empty >= 2) break;
+          } else {
+            empty = 0;
+          }
+        }
+      }
+    }
+    return {
+      title: doc.first('h1.book-title').text(),
+      coverUrl: doc.first('.book-img img').absUrl('src'),
+      author: author,
+      artist: artist,
+      intro: intro,
+      status: status,
+      episodes: eps
+    };
+  },
+
+  audio: function (episodeUrl) {
+    var u = this.host.sniff(episodeUrl, {
+      desktop: true,
+      validate: function (x) { return /ting13\.top|\.m4a|\.mp3/.test(x); }
+    });
+    if (!u) throw new Error('爱听书取流失败，稍后再试');
+    return u;
+  }
+});
