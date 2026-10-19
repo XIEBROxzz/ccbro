@@ -2,7 +2,7 @@
     "sites":  [
                   {
                       "key":  "apilsbzy1_com",
-                      "name":  "èè²Xèµæºç«",
+                      "name":  "老色X资源站",
                       "type":  1,
                       "api":  "https://apilsbzy1.com/api.php/provide/vod",
                       "searchable":  1,
@@ -42,7 +42,7 @@
                   },
                   {
                       "key":  "haohuazy_com",
-                      "name":  "è±ªåèµæºç«",
+                      "name":  "豪华资源站",
                       "type":  1,
                       "api":  "https://haohuazy.com/api.php/provide/vod",
                       "searchable":  1,
@@ -122,7 +122,7 @@
                   },
                   {
                       "key":  "subocj_com",
-                      "name":  "éæ­èµæºç«",
+                      "name":  "速播资源站",
                       "type":  1,
                       "api":  "https://subocj.com/api.php/provide/vod",
                       "searchable":  1,
@@ -142,7 +142,7 @@
                   },
                   {
                       "key":  "jkunzyapi_com",
-                      "name":  "JKUNèµæºç«",
+                      "name":  "JKUN资源站",
                       "type":  1,
                       "api":  "https://jkunzyapi.com/api.php/provide/vod",
                       "searchable":  1,
@@ -152,7 +152,7 @@
                   },
                   {
                       "key":  "api_vnzyz_com",
-                      "name":  "è¶åèµæºç«",
+                      "name":  "越南资源站",
                       "type":  1,
                       "api":  "https://api.vnzyz.com/api.php/provide/vod",
                       "searchable":  1,
@@ -162,7 +162,7 @@
                   },
                   {
                       "key":  "www_mdzyapi_com",
-                      "name":  "é­é½èµæºç«",
+                      "name":  "魔都资源站",
                       "type":  1,
                       "api":  "https://www.mdzyapi.com/api.php/provide/vod",
                       "searchable":  1,
@@ -182,7 +182,7 @@
                   },
                   {
                       "key":  "ffzy5_tv",
-                      "name":  "éå¡èµæºç«",
+                      "name":  "非凡资源站",
                       "type":  1,
                       "api":  "https://ffzy5.tv/api.php/provide/vod",
                       "searchable":  1,
@@ -192,7 +192,7 @@
                   },
                   {
                       "key":  "fhapi9_com",
-                      "name":  "çªå·èµæºç«",
+                      "name":  "番号资源站",
                       "type":  1,
                       "api":  "http://fhapi9.com/api.php/provide/vod",
                       "searchable":  1,
@@ -232,7 +232,7 @@
                   },
                   {
                       "key":  "huyazy_net",
-                      "name":  "èçèµæºç«",
+                      "name":  "虎牙资源站",
                       "type":  1,
                       "api":  "https://huyazy.net/api.php/provide/vod",
                       "searchable":  1,
@@ -292,7 +292,7 @@
                   },
                   {
                       "key":  "api_maoyanapi_top",
-                      "name":  "ç«ç¼èµæº",
+                      "name":  "猫眼资源",
                       "type":  1,
                       "api":  "https://api.maoyanapi.top/api.php/provide/vod",
                       "searchable":  1,
@@ -322,7 +322,7 @@
                   },
                   {
                       "key":  "jipinvip1_com",
-                      "name":  "æ°æåèµæºç«",
+                      "name":  "新极品资源站",
                       "type":  1,
                       "api":  "https://jipinvip1.com/api.php/provide/vod",
                       "searchable":  1,
@@ -332,7 +332,7 @@
                   },
                   {
                       "key":  "api_douapi_cc",
-                      "name":  "è±è±èµæºç«",
+                      "name":  "豆豆资源站",
                       "type":  1,
                       "api":  "https://api.douapi.cc/api.php/provide/vod",
                       "searchable":  1,
@@ -402,7 +402,7 @@
                   },
                   {
                       "key":  "naixxzy_com",
-                      "name":  "å¥¶é¦é¦èµæºç«",
+                      "name":  "奶香香资源站",
                       "type":  1,
                       "api":  "https://naixxzy.com/api.php/provide/vod",
                       "searchable":  1,
@@ -412,7 +412,7 @@
                   },
                   {
                       "key":  "apilj_com",
-                      "name":  "è¾£æ¤èµæºç«",
+                      "name":  "辣椒资源站",
                       "type":  1,
                       "api":  "https://apilj.com/api.php/provide/vod",
                       "searchable":  1,
@@ -432,7 +432,7 @@
                   },
                   {
                       "key":  "www_suboziyuan_net",
-                      "name":  "éæ­èµæºç«",
+                      "name":  "速播资源站",
                       "type":  1,
                       "api":  "https://www.suboziyuan.net/api.php/provide/vod",
                       "searchable":  1,
@@ -462,7 +462,7 @@
                   },
                   {
                       "key":  "91md_me",
-                      "name":  "éº»è±èµæºç«",
+                      "name":  "麻豆资源站",
                       "type":  1,
                       "api":  "https://91md.me/api.php/provide/vod",
                       "searchable":  1,
@@ -472,7 +472,7 @@
                   },
                   {
                       "key":  "www_jingpinx_com",
-                      "name":  "ç²¾åXèµæºç«",
+                      "name":  "精品X资源站",
                       "type":  1,
                       "api":  "https://www.jingpinx.com/api.php/provide/vod",
                       "searchable":  1,
@@ -482,7 +482,7 @@
                   },
                   {
                       "key":  "heiliaozyapi_com",
-                      "name":  "é»æèµæºç«",
+                      "name":  "黑料资源站",
                       "type":  1,
                       "api":  "https://heiliaozyapi.com/api.php/provide/vod",
                       "searchable":  1,
@@ -502,7 +502,7 @@
                   },
                   {
                       "key":  "fqzy_me",
-                      "name":  "çªèèµæºç«",
+                      "name":  "番茄资源站",
                       "type":  1,
                       "api":  "https://fqzy.me/api.php/provide/vod",
                       "searchable":  1,
@@ -522,7 +522,7 @@
                   },
                   {
                       "key":  "iqiyizyapi_com",
-                      "name":  "ç±å¥èºèµæºç«",
+                      "name":  "爱奇艺资源站",
                       "type":  1,
                       "api":  "https://iqiyizyapi.com/api.php/provide/vod",
                       "searchable":  1,
@@ -532,7 +532,7 @@
                   },
                   {
                       "key":  "lovedan_net",
-                      "name":  "è¾æ¦èµæºç«",
+                      "name":  "艾旦资源站",
                       "type":  1,
                       "api":  "https://lovedan.net/api.php/provide/vod",
                       "searchable":  1,
