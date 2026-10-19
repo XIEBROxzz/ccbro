@@ -455,7 +455,20 @@ registerSource({
 
   itToken: function (force) {
     if (!force && IT.token && Date.now() - IT.at < 6600000) return IT.token;
-    var stub = this.host.getString(IT.base + '/play/1_1_1.html', { desktop: true });
+    var self = this;
+    var stub = '';
+    for (var a = 0; a < 3; a++) {
+      try {
+        stub = self.host.getString(IT.base + '/play/1_1_1.html', { desktop: true });
+        break;
+      } catch (e) {
+        if (e && (e.status === 429 || e.status === 403)) {
+          self.host.sleep(1800 * (a + 1));
+        } else {
+          throw e;
+        }
+      }
+    }
     var m = stub.match(/reversed\s*=\s*"([^"]+)"/);
     if (!m) throw new Error('爱听书反爬壳异常');
     var code = this.host.base64Decode(m[1].split('').reverse().join(''));
@@ -473,6 +486,25 @@ registerSource({
     if (html && html.length > 3000 && html.indexOf('Loading') < 0) return html;
     this.itToken(true);
     return this.host.getString(url, { desktop: true, headers: this.itCookie() });
+  },
+
+  itPage: function (url) {
+    var self = this;
+    var last = null;
+    for (var a = 0; a < 4; a++) {
+      try {
+        return self.itReal(url);
+      } catch (e) {
+        last = e;
+        var s = e && e.status;
+        if (s === 429 || s === 403) {
+          self.host.sleep(1500 * (a + 1));
+          continue;
+        }
+        throw e;
+      }
+    }
+    throw last;
   },
 
   categoryMenus: function () {
@@ -519,7 +551,20 @@ registerSource({
 
   bookDetail: function (bookUrl, loadEpisodes, loadFullPages) {
     var self = this;
-    var doc = this.host.getHtml(bookUrl, { desktop: true });
+    var doc;
+    for (var rt = 0; rt < 3; rt++) {
+      try {
+        doc = self.host.getHtml(bookUrl, { desktop: true });
+        break;
+      } catch (e429r) {
+        if (e429r && (e429r.status === 429 || e429r.status === 403)) {
+          self.host.sleep(1800 * (rt + 1));
+        } else {
+          throw e429r;
+        }
+      }
+    }
+    if (!doc) throw new Error('爱听书详情页被限流，稍后再开');
     var author = doc.first('dd:has(a[href*="/author/"])').text().replace(/^[\s\S]*?作者[：:]/, '');
     var artist = doc.first('dd:has(a[href*="/boyin/"])').text().replace(/^[\s\S]*?演播[：:]/, '');
     var intro = doc.first('p:has(span:contains(简介))').text().replace(/^[\s\S]*?简介[：:]/, '');
@@ -545,20 +590,17 @@ registerSource({
           for (var p = 1; p <= 260; p++) {
             var html;
             try {
-              html = self.itReal(du + '?page=' + p + '&sort=asc');
+              html = self.itPage(du + '?page=' + p + '&sort=asc');
             } catch (e429) {
-              if (e429 && e429.status === 429 && empty === 0) {
-                self.host.sleep(2000);
-                html = self.itReal(du + '?page=' + p + '&sort=asc');
-              } else {
-                break;
-              }
+              // 反复退避仍被限流：保留已加载部分收尾
+              self.host.toast('被站点限流，已加载 ' + eps.length + ' 集，稍后再开此书继续');
+              break;
             }
             if (!html || html.length < 3000 || html.indexOf('Loading') > -1) break;
             var before = eps.length;
             pushEps(self.host.parseHtml(html, self.url));
             self.host.progress(eps.length + ' 集 (' + p + ')');
-            if (p > 1) self.host.sleep(200);
+            if (p > 1) self.host.sleep(600);
             if (eps.length === before) {
               empty++;
               if (empty >= 2) break;
