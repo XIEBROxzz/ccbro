@@ -447,6 +447,7 @@ registerSource({
   url: IT.base,
   group: '听书',
   description: '海量网文有声书，16分类。首次播放走 WebView 嗅探约慢五六秒，之后秒开。',
+  multipleEpisodePages: true,
 
   itCookie: function () {
     return { Cookie: '__51guid__=' + IT.token + '; __51refresh__guid=1', Referer: IT.base + '/' };
@@ -534,30 +535,45 @@ registerSource({
         eps.push({ title: a.text(), url: u });
       });
     }
-    pushEps(doc);
+    // 全量章节：按站点原始（正序）翻页，直接构建完整列表，避免最新10集顶在前面
+    var dirLoaded = false;
     if (loadFullPages) {
       var du = doc.first('a.dirurl').absUrl('href');
       if (du && du.indexOf('/itingshus/') > -1) {
         var empty = 0;
-        for (var p = 1; p <= 260; p++) {
-          var html;
-          try {
-            html = self.itReal(du + '?page=' + p + '&sort=asc');
-          } catch (e) { break; }
-          if (!html || html.length < 3000 || html.indexOf('Loading') > -1) break;
-          var d2 = self.host.parseHtml(html, self.url);
-          var before = eps.length;
-          pushEps(d2);
-          self.host.progress(eps.length + ' 集 (' + p + ')');
-          if (eps.length === before) {
-            empty++;
-            if (empty >= 2) break;
-          } else {
-            empty = 0;
+        try {
+          for (var p = 1; p <= 260; p++) {
+            var html;
+            try {
+              html = self.itReal(du + '?page=' + p + '&sort=asc');
+            } catch (e429) {
+              if (e429 && e429.status === 429 && empty === 0) {
+                self.host.sleep(2000);
+                html = self.itReal(du + '?page=' + p + '&sort=asc');
+              } else {
+                break;
+              }
+            }
+            if (!html || html.length < 3000 || html.indexOf('Loading') > -1) break;
+            var before = eps.length;
+            pushEps(self.host.parseHtml(html, self.url));
+            self.host.progress(eps.length + ' 集 (' + p + ')');
+            if (p > 1) self.host.sleep(200);
+            if (eps.length === before) {
+              empty++;
+              if (empty >= 2) break;
+            } else {
+              empty = 0;
+            }
           }
+        } finally {
+          self.host.progress(null);
         }
+        dirLoaded = eps.length > 0;
       }
     }
+    // 全量拉取失败时退回详情页自带的最新章节
+    if (!dirLoaded) pushEps(doc);
     return {
       title: doc.first('h1.book-title').text(),
       coverUrl: doc.first('.book-img img').absUrl('src'),
