@@ -1,0 +1,55 @@
+{
+ "name": "XC888-NSFW",
+ "sites": [
+  {
+   "name": "大奶子资源",
+   "type": 1,
+   "api": "https://apidanaizi.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "timeout": 15,
+   "key": "cv0003"
+  },
+  {
+   "name": "番号资源站",
+   "type": 1,
+   "api": "http://fhapi9.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "timeout": 15,
+   "key": "cv0002"
+  },
+  {
+   "name": "黑料资源站",
+   "type": 1,
+   "api": "https://heiliaozyapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "timeout": 15,
+   "key": "cv0004"
+  },
+  {
+   "name": "老色X资源站",
+   "type": 1,
+   "api": "https://apilsbzy1.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "timeout": 15,
+   "key": "cv0000"
+  },
+  {
+   "name": "杏吧资源",
+   "type": 1,
+   "api": "https://xingba111.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1,
+   "timeout": 15,
+   "key": "cv0001"
+  }
+ ]
+}
