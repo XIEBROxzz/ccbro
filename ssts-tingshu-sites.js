@@ -264,3 +264,138 @@ registerSource({
     return { Referer: 'http://www.djuu.com/' };
   }
 });
+
+// ============ 听吧CMS 网络小说听书（对 /books/ 同族站通用） ============
+// 模板：分类 /html/{cid}.html，书 /books/{id}.html，章节 /mp3/{id}-{f}-{n}.html
+// 章节页内联 var now="音频直链"（喜马拉雅免费 CDN），搜索需一次验证码
+
+function tingCards(doc) {
+  var out = [];
+  var cards = doc.select('.style-img');
+  cards.forEach(function (card) {
+    var link = null, linkEl = null;
+    var anchors = card.select('a[href*="/books/"]');
+    anchors.forEach(function (a) {
+      if (!linkEl && a.text()) linkEl = a;
+    });
+    if (linkEl) {
+      link = linkEl.absUrl('href');
+      out.push({
+        coverUrl: card.first('img').absUrl('src'),
+        bookUrl: link,
+        title: linkEl.text()
+      });
+    }
+  });
+  var seen = {};
+  return out.filter(function (b) {
+    if (seen[b.bookUrl] || !b.title) return false;
+    seen[b.bookUrl] = true;
+    return true;
+  });
+}
+
+var TING_CMS_SITES = [
+  {
+    id: 'e5a03b7c8d1f4a29b6e0c3d7f8a15b42',
+    name: '海洋听书',
+    base: 'https://www.79ting.com'
+  },
+  {
+    id: 'f6b14c8d9e2a5b30c7f1d4e8a9b26c53',
+    name: '天天听书',
+    base: 'https://www.02ting.com'
+  }
+];
+
+function makeTingSource(cfg) {
+  var menuCacheKey = 'tingmenu_' + cfg.name;
+  return registerSource({
+    id: cfg.id,
+    name: cfg.name,
+    url: cfg.base,
+    group: '有声小说',
+    description: '网络小说/评书有声站（听吧CMS）。搜索首次使用需输一次验证码。',
+
+    categoryMenus: function () {
+      var cached = this.host.readCache(menuCacheKey);
+      if (cached && this.host.cacheAge(menuCacheKey) < 86400000) {
+        return JSON.parse(cached);
+      }
+      var raw = this.host.getString(cfg.base);
+      var re = /href="((?:https?:\/\/[^"]*)?\/html\/\d+\.html)"[^>]*(?:title="([^"]{1,10})")?[^>]*>([^<]{1,10})</g;
+      var m, seen = {}, list = [];
+      while ((m = re.exec(raw))) {
+        var href = m[1];
+        var t = (m[2] || m[3] || '').trim();
+        if (!t || seen[href]) continue;
+        seen[href] = true;
+        if (href.indexOf('http') !== 0) href = cfg.base + href;
+        list.push({ title: t, url: 'tgp:' + href });
+        if (list.length >= 30) break;
+      }
+      var menus = [{ title: '分类', tabs: list }];
+      if (list.length > 0) this.host.writeCache(menuCacheKey, JSON.stringify(menus));
+      return menus;
+    },
+
+    categoryPage: function (u) {
+      var doc = this.host.getHtml(u.substring(4));
+      return { books: tingCards(doc), currentPage: 1 };
+    },
+
+    search: function (keywords, page) {
+      var html = this.host.getString(cfg.base + '/search.php?searchword=' +
+        encodeURIComponent(keywords));
+      if (/安全验证|安全提示|checkcode/i.test(html)) {
+        throw new Error('需要输一次验证码：点下方"验证"，通过后自动重试');
+      }
+      var doc = this.host.parseHtml(html, cfg.base);
+      return { books: tingCards(doc), totalPage: page };
+    },
+
+    searchVerificationUrl: function (keywords) {
+      return cfg.base + '/search.php?searchword=' + encodeURIComponent(keywords);
+    },
+
+    bookDetail: function (bookUrl) {
+      var doc = this.host.getHtml(bookUrl);
+      var head = doc.first('.style-img');
+      var title = doc.first('h1.style-title').text() || '';
+      var plain = head.text().replace(/\u00a0/g, ' ');
+      var author = (plain.match(/作者：([^，,\s]+)/) || ['', ''])[1];
+      var artist = (plain.match(/由\s*([^，,\s]+?)\s*播音/) || ['', ''])[1];
+      var intro = (plain.match(/内容介绍：([\s\S]+?)(?:猜你|相关|最新剧透|$)/) || ['', ''])[1].trim();
+      if (intro.length > 500) intro = intro.substring(0, 500) + '…';
+      var seen = {};
+      var eps = doc.select('a[href*="/mp3/"]').map(function (a) {
+        return { title: a.attr('title') || a.ownText() || a.text(), url: a.absUrl('href') };
+      }).filter(function (e) {
+        if (!e.title || !/\/mp3\/\d+-\d+-\d+\.html/.test(e.url)) return false;
+        if (seen[e.url]) return false;
+        seen[e.url] = true;
+        return true;
+      });
+      return {
+        title: title,
+        coverUrl: head.first('img').absUrl('src'),
+        author: author,
+        artist: artist,
+        intro: intro,
+        episodes: eps
+      };
+    },
+
+    audio: function (episodeUrl) {
+      var html = this.host.getString(episodeUrl);
+      var m = html.match(/var now="([^"]+)"/);
+      if (!m) m = html.match(/var now='([^']+)'/);
+      if (!m) throw new Error('未取到音频地址');
+      return m[1];
+    }
+  });
+}
+
+TING_CMS_SITES.forEach(function (cfg) {
+  makeTingSource(cfg);
+});
