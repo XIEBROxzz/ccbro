@@ -1,0 +1,247 @@
+{
+    "sites":  [
+                  {
+                      "key":  "ckzy_me",
+                      "name":  "CK资源",
+                      "type":  1,
+                      "api":  "https://ckzy.me/api.php/provide/vod/?ac=list",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "api_1080zyku_com",
+                      "name":  "1080资源",
+                      "type":  1,
+                      "api":  "https://api.1080zyku.com/inc/api_mac10.php?ac=list",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "api_xinlangapi_com",
+                      "name":  "新浪资源",
+                      "type":  1,
+                      "api":  "https://api.xinlangapi.com/xinlangapi.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "api_apibdzy_com",
+                      "name":  "百度云资源",
+                      "type":  1,
+                      "api":  "https://api.apibdzy.com/api.php/provide/vod/?ac=list",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "cj_lziapi_com",
+                      "name":  "量子资源",
+                      "type":  1,
+                      "api":  "https://cj.lziapi.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "api_guangsuapi_com",
+                      "name":  "光速资源",
+                      "type":  1,
+                      "api":  "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "subocaiji_com",
+                      "name":  "苏博资源",
+                      "type":  1,
+                      "api":  "https://subocaiji.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "api_yyzy-tv_vip",
+                      "name":  "优选资源",
+                      "type":  1,
+                      "api":  "https://api.yyzy-tv.vip/inc/apijson.php",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "bfzyapi_com",
+                      "name":  "暴风资源",
+                      "type":  1,
+                      "api":  "https://bfzyapi.com/api.php/provide/vod/?ac=list",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "jyzyapi_com",
+                      "name":  "极云资源",
+                      "type":  1,
+                      "api":  "https://jyzyapi.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "www_hongniuzy2_com",
+                      "name":  "红牛资源",
+                      "type":  1,
+                      "api":  "https://www.hongniuzy2.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "caiji_dyttzyapi_com",
+                      "name":  "电影天堂资源",
+                      "type":  1,
+                      "api":  "http://caiji.dyttzyapi.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "ikunzyapi_com",
+                      "name":  "ikun资源",
+                      "type":  1,
+                      "api":  "https://ikunzyapi.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "360zy_com",
+                      "name":  "360资源",
+                      "type":  1,
+                      "api":  "https://360zy.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "cj_ffzyapi_com",
+                      "name":  "非凡资源",
+                      "type":  1,
+                      "api":  "https://cj.ffzyapi.com/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "www_lovedan_net",
+                      "name":  "爱弹幕资源",
+                      "type":  1,
+                      "api":  "https://www.lovedan.net/api.php/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  },
+                  {
+                      "key":  "ys_cxkjg_cn",
+                      "name":  "一点影视",
+                      "type":  1,
+                      "api":  "https://ys.cxkjg.cn/api/provide/vod",
+                      "searchable":  1,
+                      "quickSearch":  1,
+                      "filterable":  1,
+                      "timeout":  15
+                  }
+              ],
+    "lives":  [
+                  {
+                      "name":  "æ­æç´æ­",
+                      "type":  0,
+                      "url":  "https://mgtv.ottiptv.cc/mglist.m3u"
+                  },
+                  {
+                      "name":  "èçä¸èµ·ç",
+                      "type":  0,
+                      "url":  "https://sub.ottiptv.cc/huyayqk.m3u"
+                  },
+                  {
+                      "name":  "æé±¼ä¸èµ·ç",
+                      "type":  0,
+                      "url":  "https://sub.ottiptv.cc/douyuyqk.m3u"
+                  },
+                  {
+                      "name":  "Bç«ç´æ­",
+                      "type":  0,
+                      "url":  "https://sub.ottiptv.cc/bililive.m3u"
+                  },
+                  {
+                      "name":  "YYè½®æ­",
+                      "type":  0,
+                      "url":  "https://sub.ottiptv.cc/yylunbo.m3u"
+                  },
+                  {
+                      "name":  "Kimentanm",
+                      "type":  0,
+                      "url":  "https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
+                  },
+                  {
+                      "name":  "wqwqwq",
+                      "type":  0,
+                      "url":  "https://la1.wqwqwq.sbs/tv.m3u"
+                  },
+                  {
+                      "name":  "YanG",
+                      "type":  0,
+                      "url":  "https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u"
+                  },
+                  {
+                      "name":  "suxuang",
+                      "type":  0,
+                      "url":  "https://raw.githubusercontent.com/suxuang/myIPTV/main/ipv4.m3u"
+                  },
+                  {
+                      "name":  "Guovin",
+                      "type":  0,
+                      "url":  "https://raw.githubusercontent.com/Guovin/iptv-api/gd/output/result.m3u"
+                  },
+                  {
+                      "name":  "mlzlzj",
+                      "type":  0,
+                      "url":  "https://raw.githubusercontent.com/mlzlzj/TV/main/output/result.m3u"
+                  },
+                  {
+                      "name":  "gambiarras",
+                      "type":  0,
+                      "url":  "https://raw.githubusercontent.com/gambiarras/legal-iptv/refs/heads/main/playlist.m3u"
+                  },
+                  {
+                      "name":  "epg.pw All",
+                      "type":  0,
+                      "url":  "https://m3u.002397.xyz/all.m3u"
+                  },
+                  {
+                      "name":  "iptv.org All",
+                      "type":  0,
+                      "url":  "https://m3u.002397.xyz/o_all.m3u"
+                  }
+              ],
+    "wallpaper":  ""
+}
