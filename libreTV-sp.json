@@ -1,5 +1,5 @@
 {
- "name": "LibreTV 订阅（SP版）",
+ "name": "NSFW 成人订阅（网页版专用·勿导入绿色配置）",
  "sources": [
   {
    "name": "老色X资源站",
@@ -83,6 +83,54 @@
    "name": "大风资源",
    "api": "https://thzy1.me/api.php/provide/vod",
    "url": "https://thzy1.me/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "麻豆视频",
+   "api": "https://91md.me/api.php/provide/vod",
+   "url": "https://91md.me/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "小鸡资源",
+   "api": "https://api.xiaojizy.live/provide/vod",
+   "url": "https://api.xiaojizy.live/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "黄色仓库",
+   "api": "https://hsckzy.xyz/api.php/provide/vod",
+   "url": "https://hsckzy.xyz/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "奶香资源",
+   "api": "https://Naixxzy.com/api.php/provide/vod",
+   "url": "https://Naixxzy.com/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "辣椒资源",
+   "api": "https://apilj.com/api.php/provide/vod",
+   "url": "https://apilj.com/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "精品资源",
+   "api": "https://www.jingpinx.com/api.php/provide/vod",
+   "url": "https://www.jingpinx.com/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "SA资源",
+   "api": "https://api.souavzyw.net/api.php/provide/vod",
+   "url": "https://api.souavzyw.net/api.php/provide/vod",
+   "isAdult": true
+  },
+  {
+   "name": "快车资源",
+   "api": "https://caiji.kuaichezy.org/api.php/provide/vod",
+   "url": "https://caiji.kuaichezy.org/api.php/provide/vod",
    "isAdult": true
   }
  ],
@@ -212,8 +260,80 @@
    "searchable": 1,
    "filterable": 1,
    "timeout": 15
+  },
+  {
+   "key": "nsw015",
+   "name": "麻豆视频",
+   "type": 1,
+   "api": "https://91md.me/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw016",
+   "name": "小鸡资源",
+   "type": 1,
+   "api": "https://api.xiaojizy.live/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw017",
+   "name": "黄色仓库",
+   "type": 1,
+   "api": "https://hsckzy.xyz/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw018",
+   "name": "奶香资源",
+   "type": 1,
+   "api": "https://Naixxzy.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw019",
+   "name": "辣椒资源",
+   "type": 1,
+   "api": "https://apilj.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw020",
+   "name": "精品资源",
+   "type": 1,
+   "api": "https://www.jingpinx.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw021",
+   "name": "SA资源",
+   "type": 1,
+   "api": "https://api.souavzyw.net/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw022",
+   "name": "快车资源",
+   "type": 1,
+   "api": "https://caiji.kuaichezy.org/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
   }
  ],
  "version": "v2026.10.20",
- "updated": "2026-10-20 12:10 CST"
+ "updated": "2026-10-20 12:32 CST"
 }
