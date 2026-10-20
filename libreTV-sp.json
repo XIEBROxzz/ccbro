@@ -150,6 +150,24 @@
    "api": "https://aosikazy.com/api.php/provide/vod",
    "url": "https://aosikazy.com/api.php/provide/vod",
    "isAdult": true
+  },
+  {
+   "name": "RB资源",
+   "api": "https://www.xrbsp.com/api/json.php",
+   "url": "https://www.xrbsp.com/api/json.php",
+   "isAdult": true
+  },
+  {
+   "name": "KG资源",
+   "api": "https://www.kxgav.com/api/json.php",
+   "url": "https://www.kxgav.com/api/json.php",
+   "isAdult": true
+  },
+  {
+   "name": "MN资源",
+   "api": "https://www.msnii.com/api/json.php",
+   "url": "https://www.msnii.com/api/json.php",
+   "isAdult": true
   }
  ],
  "sites": [
@@ -377,8 +395,35 @@
    "searchable": 1,
    "filterable": 1,
    "timeout": 15
+  },
+  {
+   "key": "nsw026",
+   "name": "RB资源",
+   "type": 1,
+   "api": "https://www.xrbsp.com/api/json.php",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw027",
+   "name": "KG资源",
+   "type": 1,
+   "api": "https://www.kxgav.com/api/json.php",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "nsw028",
+   "name": "MN资源",
+   "type": 1,
+   "api": "https://www.msnii.com/api/json.php",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
   }
  ],
  "version": "v2026.10.20",
- "updated": "2026-10-20 12:47 CST"
+ "updated": "2026-10-20 12:59 CST"
 }
