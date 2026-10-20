@@ -1,7 +1,7 @@
 {
  "name": "LibreTV 订阅（绿色版）",
  "version": "v2026.10.20",
- "updated": "2026-10-20 12:32 CST",
+ "updated": "2026-10-20 13:02 CST",
  "sources": [
   {
    "name": "非凡资源",
@@ -142,6 +142,11 @@
    "name": "如意资源",
    "api": "https://cj.rycjapi.com/api.php/provide/vod",
    "url": "https://cj.rycjapi.com/api.php/provide/vod"
+  },
+  {
+   "name": "OK资源",
+   "api": "https://api.okzyw.net/api.php/provide/vod",
+   "url": "https://api.okzyw.net/api.php/provide/vod"
   }
  ],
  "sites": [
@@ -393,6 +398,15 @@
    "name": "如意资源",
    "type": 1,
    "api": "https://cj.rycjapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "lt029",
+   "name": "OK资源",
+   "type": 1,
+   "api": "https://api.okzyw.net/api.php/provide/vod",
    "searchable": 1,
    "filterable": 1,
    "timeout": 15
