@@ -143,5 +143,25 @@
   "name": "搜播资源2",
   "api": "https://subocj.com/api.php/provide/vod",
   "url": "https://subocj.com/api.php/provide/vod"
+ },
+ {
+  "name": "魔都资源",
+  "api": "https://caiji.moduapi.cc/api.php/provide/vod",
+  "url": "https://caiji.moduapi.cc/api.php/provide/vod"
+ },
+ {
+  "name": "爱奇艺资源",
+  "api": "https://iqiyizyapi.com/api.php/provide/vod",
+  "url": "https://iqiyizyapi.com/api.php/provide/vod"
+ },
+ {
+  "name": "茅台资源",
+  "api": "https://caiji.maotaizy.cc/api.php/provide/vod",
+  "url": "https://caiji.maotaizy.cc/api.php/provide/vod"
+ },
+ {
+  "name": "天涯影视",
+  "api": "https://tyyszyapi.com/api.php/provide/vod",
+  "url": "https://tyyszyapi.com/api.php/provide/vod"
  }
 ]
