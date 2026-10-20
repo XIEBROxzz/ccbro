@@ -1,5 +1,5 @@
 {
- "name": "XC888 采集源（探活版·双键）",
+ "name": "XC888 采集源（探活·去成人版）",
  "sources": [
   {
    "name": "非凡资源",
@@ -145,6 +145,26 @@
    "name": "搜播资源2",
    "api": "https://subocj.com/api.php/provide/vod",
    "url": "https://subocj.com/api.php/provide/vod"
+  },
+  {
+   "name": "魔都资源",
+   "api": "https://caiji.moduapi.cc/api.php/provide/vod",
+   "url": "https://caiji.moduapi.cc/api.php/provide/vod"
+  },
+  {
+   "name": "爱奇艺资源",
+   "api": "https://iqiyizyapi.com/api.php/provide/vod",
+   "url": "https://iqiyizyapi.com/api.php/provide/vod"
+  },
+  {
+   "name": "茅台资源",
+   "api": "https://caiji.maotaizy.cc/api.php/provide/vod",
+   "url": "https://caiji.maotaizy.cc/api.php/provide/vod"
+  },
+  {
+   "name": "天涯影视",
+   "api": "https://tyyszyapi.com/api.php/provide/vod",
+   "url": "https://tyyszyapi.com/api.php/provide/vod"
   }
  ],
  "liveSources": [],
@@ -406,6 +426,42 @@
    "name": "搜播资源2",
    "type": 1,
    "api": "https://subocj.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "xc030",
+   "name": "魔都资源",
+   "type": 1,
+   "api": "https://caiji.moduapi.cc/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "xc031",
+   "name": "爱奇艺资源",
+   "type": 1,
+   "api": "https://iqiyizyapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "xc032",
+   "name": "茅台资源",
+   "type": 1,
+   "api": "https://caiji.maotaizy.cc/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "xc033",
+   "name": "天涯影视",
+   "type": 1,
+   "api": "https://tyyszyapi.com/api.php/provide/vod",
    "searchable": 1,
    "filterable": 1,
    "timeout": 15
