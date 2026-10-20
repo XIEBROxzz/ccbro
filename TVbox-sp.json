@@ -1,5 +1,5 @@
 {
- "name": "TVbox 订阅（SP版）",
+ "name": "XC888-NSFW",
  "sites": [
   {
    "key": "ns1",
@@ -416,8 +416,80 @@
    "searchable": 1,
    "quickSearch": 1,
    "filterable": 1
+  },
+  {
+   "key": "ns44",
+   "name": "麻豆视频",
+   "type": 1,
+   "api": "https://91md.me/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns45",
+   "name": "小鸡资源",
+   "type": 1,
+   "api": "https://api.xiaojizy.live/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns46",
+   "name": "黄色仓库",
+   "type": 1,
+   "api": "https://hsckzy.xyz/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns47",
+   "name": "奶香资源",
+   "type": 1,
+   "api": "https://Naixxzy.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns48",
+   "name": "辣椒资源",
+   "type": 1,
+   "api": "https://apilj.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns49",
+   "name": "精品资源",
+   "type": 1,
+   "api": "https://www.jingpinx.com/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns50",
+   "name": "SA资源",
+   "type": 1,
+   "api": "https://api.souavzyw.net/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
+  },
+  {
+   "key": "ns51",
+   "name": "快车资源",
+   "type": 1,
+   "api": "https://caiji.kuaichezy.org/api.php/provide/vod",
+   "searchable": 1,
+   "quickSearch": 1,
+   "filterable": 1
   }
  ],
  "version": "v2026.10.20",
- "updated": "2026-10-20 12:10 CST"
+ "updated": "2026-10-20 12:32 CST"
 }
