@@ -963,6 +963,33 @@
    "quickSearch": 0,
    "changeable": 0,
    "jar": "https://qist.wyfc.qzz.io/jar/fan.txt;md5;aa8d37525617af470b3b8dfc91db8669"
+  },
+  {
+   "key": "ag075cms",
+   "name": "樱花资源",
+   "type": 1,
+   "api": "https://m3u8.apiyhzy.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "ag076cms",
+   "name": "如意资源",
+   "type": 1,
+   "api": "https://cj.rycjapi.com/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
+  },
+  {
+   "key": "ag077cms",
+   "name": "OK资源",
+   "type": 1,
+   "api": "https://api.okzyw.net/api.php/provide/vod",
+   "searchable": 1,
+   "filterable": 1,
+   "timeout": 15
   }
  ],
  "lives": [
@@ -1015,5 +1042,5 @@
  ],
  "wallpaper": "https://动态壁纸.饭.eu.org/",
  "version": "v2026.10.20",
- "updated": "2026-10-20 12:10 CST"
+ "updated": "2026-10-20 13:51 CST"
 }
